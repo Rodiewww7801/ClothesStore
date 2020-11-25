@@ -1,0 +1,14 @@
+﻿@using ClothesStore.Data
+@model IEnumerable<Product>
+
+@{ 
+    ViewBag.Title = "Product";
+}
+@foreach (var p in @Model)
+{
+    <div>
+        <h3>@p.Name</h3>
+        <p>@p.Info</p>
+        <h4>@p.Price.ToString("$# USD")</h4>
+    </div>
+}
