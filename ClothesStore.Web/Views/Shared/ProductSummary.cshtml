@@ -1,0 +1,19 @@
+﻿@using ClothesStore.Data.Entities;
+@model Product
+
+<div>
+    <h3>
+        <strong>@Model.Name </strong> @Model.Category
+        <span>@Model.Price.ToString("$# USD")</span>
+    </h3>
+    @using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        <div>
+            @Html.Hidden("productId", Model.Id)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" value="ADD TO CART" />
+        </div>
+    }
+    <p>In Stock: @Model.QuantityInStock</p>
+    <span> @Model.Info</span>
+</div>

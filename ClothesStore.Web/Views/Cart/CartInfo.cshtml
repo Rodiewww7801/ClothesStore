@@ -1,0 +1,7 @@
+﻿@model ClothesStore.Web.Models.CartViewModel
+
+<div>
+    @Html.ActionLink("Your Cart", "Index", "Cart",
+    new {returnUrl = Request.Url.PathAndQuery},
+    new { returnUrl = Request.Url.PathAndQuery })
+</div>

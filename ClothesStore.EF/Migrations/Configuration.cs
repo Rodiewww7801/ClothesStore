@@ -5,6 +5,7 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
     using ClothesStore.Data;
+    using ClothesStore.Data.Entities;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ClothesStore.EF.StoreContext>
     {
@@ -20,29 +21,32 @@
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
 
-            context.Products.AddOrUpdate(x => x.ProductId, new Product
+            context.Products.AddOrUpdate(x => x.Id, new Product
             {
-                ProductId = 1,
+                Id = 1,
                 Name = "TEETH PROBLEMS",
                 Category = "T-SHIRT",
                 Info = "100% Cotton\nIf u want one. Add in description \"I want one pls\"",
+                QuantityInStock = 20,
                 Price = 65
-            }, 
-            new Product { 
-                ProductId = 2,
+            },
+            new Product {
+                Id = 2,
                 Name = "HEAD PROBLEMS",
                 Category = "T-SHIRT",
                 Info = "100% Cotton\nthoughts in my head",
+                QuantityInStock = 20,
                 Price = 65
             },
              new Product
              {
-                 ProductId = 3,
+                 Id = 3,
                  Name = "THE BJORK",
                  Category = "KNIT SWEATER",
                  Info = "2 SIDED SWEATER WITH FULL JACQUARD\nSWEATER MADE FROM EXPENSIVE MERINOS YARN\nOVERSIZED BAGGY FIT\nWarm.Good for winter",
-                Price = 145
-             });
+                 QuantityInStock = 5,
+                 Price = 145
+             }) ;
         }
     }
 }

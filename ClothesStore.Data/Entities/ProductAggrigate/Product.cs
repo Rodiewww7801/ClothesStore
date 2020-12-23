@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClothesStore.Data
+namespace ClothesStore.Data.Entities
 {
     public class Product
     {
-        public int ProductId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Info { get; set; }
         public string Category { get; set; }
+        public int QuantityInStock { get; set; }
         public decimal Price { get; set; }
     }
 }

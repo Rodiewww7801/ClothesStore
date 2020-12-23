@@ -1,4 +1,5 @@
 packages
+/TestChecker/*
 .vs/
 *.suo
 */bin/*

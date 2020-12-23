@@ -1,0 +1,49 @@
+﻿@model ClothesStore.Data.Entities.OrderAggrigate.OrderDetails
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2>Checkout order</h2>
+<p>Please enter your contact details</p>
+
+@using (Html.BeginForm())
+{
+    <style>
+        .colortext {
+            color:red;
+        }
+    </style>
+    <p class="colortext"> @Html.ValidationSummary(true)</p>
+    <h3>Details</h3>
+    <div>
+        <label>Your name: </label>
+        @Html.TextBoxFor(x => x.Name)
+       <p class="colortext"> @Html.ValidationMessageFor(model => model.Name)</p>
+    </div>
+    <div>
+        <label>Your Email: </label>
+        @Html.TextBoxFor(x => x.Email)
+        <p class="colortext"> @Html.ValidationMessageFor(model => model.Email)</p>
+    </div>
+    <h3>Address Delivery</h3>
+    <div>
+        <label>Your address:</label>
+        @Html.TextBoxFor(x => x.Address)
+        <p class="colortext"> @Html.ValidationMessageFor(model => model.Address)</p>
+    </div>
+    <div>
+        <label>Country: </label>
+        @Html.TextBoxFor(x => x.Country)
+        <p class="colortext"> @Html.ValidationMessageFor(model => model.Country)</p>
+    </div>
+    <div>
+        <label>City: </label>
+        @Html.TextBoxFor(x => x.City)
+        <p class="colortext"> @Html.ValidationMessageFor(model => model.City)</p>
+    </div>
+
+    <div>
+        <input class="body-content" type="submit" value="Confirm" />
+    </div>
+}

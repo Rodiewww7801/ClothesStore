@@ -1,0 +1,58 @@
+﻿@using ClothesStore.Web.Controllers
+@model  ClothesStore.Web.Models.CartViewModel
+
+@{
+    ViewBag.Title = "Your Cart";
+}
+
+<h2>Your Cart</h2>
+    <style>
+        .colortext {
+            color: red;
+        }
+    </style>
+    <a class="colortext"> @Html.ValidationSummary()</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Quantity</th>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Total price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var orderItem in Model.Order.OrderItems)
+            {
+                <tr>
+                    <td>@orderItem.Quantity</td>
+                    <td>@Model.Products[orderItem.ProductId].Name</td>
+                    <td>@Model.Products[orderItem.ProductId].Price.ToString("$# USD")</td>
+                    <td>@((orderItem.Quantity * @Model.Products[orderItem.ProductId].Price).ToString("$# USD")) </td>
+                    <td>
+                        @using (Html.BeginForm("RemoveFromCard", "Cart"))
+                        {
+
+                            @Html.Hidden("productId", orderItem.ProductId)
+                            @Html.HiddenFor(x => x.ReturnUrl)
+                            <input type="submit" value="delete" />
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Total: </td>
+                <td>@Model.TotalPrice.ToString("$# USD")</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div>
+        @Html.ActionLink("Continue Shopping", "List", "Home")
+        @if (Model.Error)
+        {
+            @Html.ActionLink("Checkout", "Reservation", "Order")
+        }
+    </div>

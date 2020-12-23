@@ -7,7 +7,15 @@
 </head>
 <body>
     <div>
-        @RenderBody()
+        @Html.Action("CartInfo", "Cart")
+    </div>
+    <div>
+        <div>
+            @Html.Action("Menu", "Navigation")
+        </div>
+        <div>
+            @RenderBody()
+        </div>
     </div>
 </body>
 </html>
